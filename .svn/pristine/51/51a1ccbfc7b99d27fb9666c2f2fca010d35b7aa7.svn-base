@@ -1,0 +1,14 @@
+#if !defined(ScoreH)
+#define ScoreH
+
+
+class Score{
+public:
+	Score();
+	int getAmount() const;
+	void updateAmount(int a);
+private:
+	int amount_;
+};
+
+#endif

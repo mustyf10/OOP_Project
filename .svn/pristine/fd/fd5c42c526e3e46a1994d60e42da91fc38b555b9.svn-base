@@ -1,0 +1,45 @@
+// Mouse.h: interface for the Mouse class
+//////////////////////////////////////////////////////////////////////
+
+#if !defined(MouseH)
+#define MouseH
+
+#include "constants.h"
+#include "Underground.h"
+#include "Nut.h"
+#include "MovableGridItem.h"
+
+class Mouse : public MovableGridItem
+{
+	public:
+		//constructor
+		Mouse();
+		//assessors
+		void reset();
+		bool isAtPosition(int x, int y) const;
+		bool isAlive() const;
+		bool hasEscaped() const;
+		const bool hasReachedAHole(Underground ug) const;
+		//mutators
+		void die();
+		void escapeIntoHole();
+		const bool canCollectNut(Nut*);
+		void scamper(char k);
+		void transport();
+		//data members
+
+	protected:
+		//data members
+		bool alive_;
+		bool escaped_;
+		bool hasAteNut_;
+		//supporting functions
+		//void positionInMiddleOfGrid();
+		static int rng_(const int max);
+		void positionAtRandom();
+		void updatePosition(int dx, int dy);
+		void transportPosition(int dx, int dy);
+		Nut nut_;
+};
+
+#endif // !defined(MouseH)
